@@ -1,0 +1,5 @@
+name: Luxury-SCLite
+author: LuxuryTeam
+version: 0.1
+main: xyz.luxury.SCPlugin
+commands:
