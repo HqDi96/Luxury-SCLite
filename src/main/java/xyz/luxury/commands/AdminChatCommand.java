@@ -1,17 +1,18 @@
 package xyz.luxury.commands;
 
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
+import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Plugin;
+import xyz.luxury.SC;
 import xyz.luxury.utils.TextHelper;
 
-public class SCCommand extends Command {
+public class AdminChatCommand extends Command {
 
     private final Plugin plugin;
 
-    public SCCommand(Plugin plugin) {
-        super("staffchat", "sc.permission");
+    public AdminChatCommand(Plugin plugin) {
+        super("adminchat", "sc.admin");
         this.plugin = plugin;
     }
 
@@ -32,13 +33,10 @@ public class SCCommand extends Command {
                 message.append(arg).append(" ");
             }
 
-            String staffChatMessage = TextHelper.format("&8[ &c&lSTAFFCHAT &8] "+"» " + "&f" + player.getName() + " " + "&8➟" + "&f" + message.toString().trim());
-
-            for (ProxiedPlayer staff : plugin.getProxy().getPlayers()) {
-                if ((staff.hasPermission("sc.permission") || staff.hasPermission("bungeecord.command.server") || staff.hasPermission("sc.see")) &&
-                        SCToggleCommand.isToggled(player)) {
-                    staff.sendMessage(staffChatMessage);
-                    return;
+            String adminChatMessage = TextHelper.format( "&8[ &4&LADMIN CHAT &8] " + "» " + "&a" + player.getName() + " " + "&8➟" + "&f" + message.toString().trim());
+            for (ProxiedPlayer admin : plugin.getProxy().getPlayers()) {
+                if (admin.hasPermission("sc.admin") && AdminToggleCommand.isToggled(player)) {
+                    admin.sendMessage(adminChatMessage);
                 }
             }
         }
