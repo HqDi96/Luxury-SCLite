@@ -2,11 +2,3 @@ name: Luxury-SCLite
 author: LuxuryTeam
 version: 0.0.1
 main: xyz.luxury.SCPlugin
-commands:
-  staffchat:
-    description: To communicate between staffs around the servers.
-    aliases: [sc]
-
-  staffchat toggle:
-    description: Toggle staff chat
-    aliases: [sc toggle]
