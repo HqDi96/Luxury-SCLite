@@ -8,6 +8,7 @@ import xyz.luxury.commands.AdminChatCommand;
 import xyz.luxury.commands.AdminToggleCommand;
 import xyz.luxury.commands.SCCommand;
 import xyz.luxury.commands.SCToggleCommand;
+import xyz.luxury.events.StaffJoinLeaveHandler;
 
 
 @Getter
@@ -30,6 +31,7 @@ public enum SC {
 
         for (Command command : commands) {
             plugin.getProxy().getPluginManager().registerCommand(plugin, command);
+            plugin.getProxy().getPluginManager().registerListener(plugin, new StaffJoinLeaveHandler());
         }
     }
 }
